@@ -50,8 +50,7 @@ def make_esi(file_path,
     os.chdir(file_path)
     for t in filenames:
         with open(t, 'rb') as f:
-            each = f.read()
-            current_samples[t] = each
+            current_samples[t] = f.read()
     current_esi = esi(current_samples, current_settings, current_info,
                       current_others)
     os.chdir(abs_path)
