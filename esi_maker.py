@@ -30,8 +30,8 @@ class esi:
 def make_esi(file_path,
              name='untitled',
              settings=None,
-             current_info=None,
-             current_others=None,
+             info=None,
+             others=None,
              asfile=True):
     abs_path = os.getcwd()
     filenames = os.listdir(file_path)
@@ -51,8 +51,7 @@ def make_esi(file_path,
     for t in filenames:
         with open(t, 'rb') as f:
             current_samples[t] = f.read()
-    current_esi = esi(current_samples, current_settings, current_info,
-                      current_others)
+    current_esi = esi(current_samples, current_settings, info, others)
     os.chdir(abs_path)
     with open(f'{name}.esi', 'wb') as f:
         pickle.dump(current_esi, f)
