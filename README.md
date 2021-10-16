@@ -27,7 +27,8 @@ make_esi(file_path,
          info=None,
          asfile=True)
 
-# file_path: the directory of folder than contains all of the audio files you want to include in the esi file
+# file_path: the directory of folder than contains all of the audio files you want to
+# include in the esi file
 
 # name: the name of the esi file
 
@@ -37,14 +38,16 @@ make_esi(file_path,
 
 # asfile: if set to True, then read settings as a file path of a text file, otherwise read as a string
 
-# this function will make an esi file at the path that the parameter `name` specified, the file extension of the esi file is esi
+# this function will make an esi file at the path that the parameter `name` specified,
+# the file extension of the esi file is esi
 
 
 load_esi(file_path, convert=True)
 
 # file_path: the file path of the esi file you want to load
 
-# convert: if set to True, the audio files in the esi file will be converted to pydub AudioSegment instances from binary data
+# convert: if set to True, the audio files in the esi file will be converted to
+# pydub AudioSegment instances from binary data
 
 
 unzip_esi(file_path, folder_name=None)
