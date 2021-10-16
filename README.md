@@ -49,10 +49,30 @@ load_esi(file_path, convert=True)
 # convert: if set to True, the audio files in the esi file will be converted to
 # pydub AudioSegment instances from binary data
 
+# this function will return an esi class instance
+
 
 unzip_esi(file_path, folder_name=None)
 
 # file_path: the file path of the esi file you want to unzip the audio files
 
 # folder_name: the path of the folder you want to unzip the audio files to
+
+# this function will unzip the audio files in the esi file to the folder you specify
+```
+
+The esi class:
+```python
+esi(samples,
+    settings=None,
+    info=None,
+    name_dict=None)
+
+# samples: a dictionary which keys are the audio file names, values are the audio file binary data
+
+# settings: the string represents settings
+
+# info: other information, string
+
+# name_dict: a dictionary which keys are audio file names without extension, values are audio file names with exntesion
 ```
