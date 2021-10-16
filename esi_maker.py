@@ -9,8 +9,6 @@ from pydub.playback import _play_with_simpleaudio as play_sound
 # and a settings file (not necessary) into one file, and can be loaded in Easy Sampler or to
 # unzip as a folder of sound files and a settings file.
 # It can also be loaded as a python object, which is an instance of class esi.
-with open('settings.py', encoding='utf-8-sig') as f:
-    exec(f.read())
 
 
 class esi:
