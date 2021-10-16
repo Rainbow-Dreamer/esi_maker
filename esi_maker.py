@@ -4,7 +4,6 @@ from ast import literal_eval
 from io import BytesIO
 import pickle
 from pydub import AudioSegment
-from pydub.playback import _play_with_simpleaudio as play_sound
 # ESI file is Easy Sampler Instrument, an ESI file combines a folder of audio files (samples)
 # and a settings file (not necessary) into one file, and can be loaded in Easy Sampler or to
 # unzip as a folder of sound files and a settings file.
