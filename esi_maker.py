@@ -11,11 +11,7 @@ from pydub import AudioSegment
 
 
 class esi:
-    def __init__(self,
-                 samples,
-                 settings=None,
-                 info=None,
-                 name_dict=None):
+    def __init__(self, samples, settings=None, info=None, name_dict=None):
         self.samples = samples
         self.settings = settings
         self.info = info
