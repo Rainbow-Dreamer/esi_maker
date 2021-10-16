@@ -74,5 +74,6 @@ esi(samples,
 
 # info: other information, string
 
-# name_dict: a dictionary which keys are audio file names without extension, values are audio file names with exntesion
+# name_dict: a dictionary which keys are audio file names without extension,
+# values are audio file names with exntesion
 ```
