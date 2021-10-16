@@ -15,12 +15,10 @@ class esi:
                  samples,
                  settings=None,
                  info=None,
-                 others=None,
                  name_dict=None):
         self.samples = samples
         self.settings = settings
         self.info = info
-        self.others = others
         self.name_dict = name_dict
 
 
@@ -28,7 +26,6 @@ def make_esi(file_path,
              name='untitled',
              settings=None,
              info=None,
-             others=None,
              asfile=True):
     abs_path = os.getcwd()
     filenames = os.listdir(file_path)
@@ -48,7 +45,7 @@ def make_esi(file_path,
     for t in filenames:
         with open(t, 'rb') as f:
             current_samples[t] = f.read()
-    current_esi = esi(current_samples, current_settings, info, others)
+    current_esi = esi(current_samples, current_settings, info)
     os.chdir(abs_path)
     with open(f'{name}.esi', 'wb') as f:
         pickle.dump(current_esi, f)
