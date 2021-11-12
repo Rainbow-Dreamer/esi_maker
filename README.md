@@ -54,8 +54,7 @@ load_esi(file_path, convert=True)
 # file_path: the file path of the esi file you want to load
 
 # convert: if set to True, the audio files in the esi file will be converted to
-# pydub AudioSegment instances from binary data, and the `samples` attribute
-# of the returned esi instance will have audio file names without extension as keys
+# pydub AudioSegment instances from binary data
 
 
 unzip_esi(file_path, folder_name=None, show_msg=True)
