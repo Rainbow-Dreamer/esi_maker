@@ -25,7 +25,11 @@ make_esi(file_path,
          name='untitled.esi',
          settings=None,
          asfile=True,
-         name_mappings=None)
+         name_mappings=None,
+         show_msg=True)
+
+# this function will make an esi file at the path that the parameter `name` specified,
+# the file extension of the esi file is esi
 
 # file_path: the directory of folder than contains all of the audio files you want to
 # include in the esi file
@@ -38,11 +42,12 @@ make_esi(file_path,
 
 # name_mappings: the dictionary maps note names to audio file names
 
-# this function will make an esi file at the path that the parameter `name` specified,
-# the file extension of the esi file is esi
+# show_msg: print progress messages or not
 
 
 load_esi(file_path, convert=True)
+
+# this function will load a esi file, return an esi class instance
 
 # file_path: the file path of the esi file you want to load
 
@@ -50,16 +55,16 @@ load_esi(file_path, convert=True)
 # pydub AudioSegment instances from binary data, and the `samples` attribute
 # of the returned esi instance will have audio file names without extension as keys
 
-# this function will load a esi file, return an esi class instance
 
+unzip_esi(file_path, folder_name=None, show_msg=True)
 
-unzip_esi(file_path, folder_name=None)
+# this function will unzip the audio files in the esi file to the folder you specify
 
 # file_path: the file path of the esi file you want to unzip the audio files
 
 # folder_name: the path of the folder you want to unzip the audio files to
 
-# this function will unzip the audio files in the esi file to the folder you specify
+# show_msg: print progress messages or not
 ```
 
 The esi class:
@@ -73,4 +78,7 @@ esi(samples,
 # settings: the string represents settings
 
 # name_mappings: the dictionary maps note names to audio file names
+
+# file_names: this attribute is an auto-generated dictionary with audio file names
+# without file extension maps to audio file names with file extension when initialize an esi instance
 ```
