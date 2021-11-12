@@ -13,13 +13,24 @@ class esi:
         self.samples = samples
         self.settings = settings
         self.name_mappings = name_mappings
+        self.file_names = {os.path.splitext(i)[0]: i for i in self.samples}
+
+    def __getitem__(self, ind):
+        if self.name_mappings:
+            if ind in self.name_mappings:
+                return self.samples[self.name_mappings[ind]]
+        if ind in self.samples:
+            return self.samples[ind]
+        if ind in self.file_names:
+            return self.samples[self.file_names[ind]]
 
 
 def make_esi(file_path,
              name='untitled.esi',
              settings=None,
              asfile=True,
-             name_mappings=None):
+             name_mappings=None,
+             show_msg=True):
     abs_path = os.getcwd()
     filenames = os.listdir(file_path)
     current_samples = {}
@@ -32,7 +43,8 @@ def make_esi(file_path,
             current_settings = settings
 
     if not filenames:
-        print('There are no sound files to make ESI files')
+        if show_msg:
+            print('There are no sound files to make ESI files')
         return
     os.chdir(file_path)
     for t in filenames:
@@ -42,10 +54,11 @@ def make_esi(file_path,
     os.chdir(abs_path)
     with open(name, 'wb') as f:
         pickle.dump(current_esi, f)
-    print(f'Successfully made ESI file: {name}')
+    if show_msg:
+        print(f'Successfully made ESI file: {name}')
 
 
-def unzip_esi(file_path, folder_name=None):
+def unzip_esi(file_path, folder_name=None, show_msg=True):
     if folder_name is None:
         folder_name = os.path.basename(file_path)
         folder_name = folder_name[:folder_name.rfind('.')]
@@ -54,24 +67,22 @@ def unzip_esi(file_path, folder_name=None):
     current_esi = load_esi(file_path, convert=False)
     os.chdir(folder_name)
     for each in current_esi.samples:
-        print(f'Currently unzip file {each}')
+        if show_msg:
+            print(f'Currently unzip file {each}')
         with open(each, 'wb') as f:
             f.write(current_esi.samples[each])
-    print(f'Unzip {os.path.basename(file_path)} successfully')
+    if show_msg:
+        print(f'Unzip {os.path.basename(file_path)} successfully')
 
 
 def load_esi(file_path, convert=True):
     with open(file_path, 'rb') as file:
         current_esi = pickle.load(file)
     current_samples = current_esi.samples
-    name_dict = {os.path.splitext(i)[0]: i for i in current_samples}
-    current_esi.name_dict = name_dict
     if convert:
-        sound_files = {
-            os.path.splitext(i)[0]:
-            AudioSegment.from_file(BytesIO(current_samples[i]),
-                                   format=os.path.splitext(i)[1][1:])
+        current_esi.samples = {
+            i: AudioSegment.from_file(BytesIO(current_samples[i]),
+                                      format=os.path.splitext(i)[1][1:])
             for i in current_samples
         }
-        current_esi.samples = sound_files
     return current_esi
