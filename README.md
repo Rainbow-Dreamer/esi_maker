@@ -11,7 +11,7 @@ ESI stands for `Easy Sampler Instrument`, which is used in [Easy Sampler](https:
 For more details about ESI format, you can refer to the musicpy sampler module's wiki, [click here](https://github.com/Rainbow-Dreamer/musicpy/wiki/musicpy-sampler-module#more-about-esi-sound-module-format)
 
 ## Installation
-Download the source codes and then run `python setup.py install` in cmd/terminal in the source codes folder.
+Run `pip install esi_maker` in cmd/terminal.
 
 ## Importing
 ```python
