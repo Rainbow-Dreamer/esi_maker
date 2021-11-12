@@ -4,7 +4,7 @@ This is a python module to make, load and unzip esi files.
 
 ESI is a lightweight sound source file format that stores a folder of audio files into a single binary file, together with a setting file, where you can customize the mappings between note names and audio file names, and other specific note control informations.
 
-ESI file stores the uncompressed data of each audio file in the folder you specify, and the information to unzip the audio files with their original file names and data and the setting file.
+ESI file stores the uncompressed data of each audio file in the folder you specify, and the information to unzip the audio files with their original file names, along with the settings.
 
 ESI stands for `Easy Sampler Instrument`, which is used in [Easy Sampler](https://github.com/Rainbow-Dreamer/easy-sampler) as an audio samples sound source file format, together with SoundFont files and audio files.
 
