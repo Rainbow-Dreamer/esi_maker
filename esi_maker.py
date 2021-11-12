@@ -115,8 +115,10 @@ def load_esi(file_path, convert=True):
     current_samples = current_esi.samples
     if convert:
         current_esi.samples = {
-            i: AudioSegment.from_file(BytesIO(current_samples[i]),
-                                      format=os.path.splitext(i)[1][1:])
+            i:
+            AudioSegment.from_file(BytesIO(current_samples[i]),
+                                   format=os.path.splitext(i)[1]
+                                   [1:]).set_frame_rate(44100).set_channels(2)
             for i in current_samples
         }
     return current_esi

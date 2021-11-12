@@ -4,7 +4,7 @@ from os import path
 setup(
     name='esi_maker',
     py_modules=['esi_maker'],
-    version='0.12',
+    version='0.14',
     license='LGPLv2.1',
     description='This is a python module to make, load and unzip esi files',
     author='Rainbow-Dreamer',
@@ -12,7 +12,7 @@ setup(
     install_requires=['pydub'],
     url='https://github.com/Rainbow-Dreamer/esi_maker',
     download_url=
-    'https://github.com/Rainbow-Dreamer/esi_maker/archive/0.12.tar.gz',
+    'https://github.com/Rainbow-Dreamer/esi_maker/archive/0.14.tar.gz',
     keywords=['esi', 'sound source', 'music'],
     classifiers=[
         'Development Status :: 3 - Alpha',
