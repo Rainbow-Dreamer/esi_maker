@@ -81,5 +81,5 @@ esi(samples,
 # name_mappings: the dictionary maps note names to audio file names
 
 # file_names: this attribute is an auto-generated dictionary with audio file names
-# without file extension maps to audio file names with file extension when initialize an esi instance
+# without file extension maps to audio file names with file extension when an esi instance is initialized
 ```
