@@ -11,18 +11,17 @@ from pydub import AudioSegment
 
 
 class esi:
-    def __init__(self, samples, settings=None, info=None, name_dict=None):
+    def __init__(self, samples, settings=None, name_mappings=None):
         self.samples = samples
         self.settings = settings
-        self.info = info
-        self.name_dict = name_dict
+        self.name_mappings = name_mappings
 
 
 def make_esi(file_path,
-             name='untitled',
+             name='untitled.esi',
              settings=None,
-             info=None,
-             asfile=True):
+             asfile=True,
+             name_mappings=None):
     abs_path = os.getcwd()
     filenames = os.listdir(file_path)
     current_samples = {}
@@ -41,11 +40,12 @@ def make_esi(file_path,
     for t in filenames:
         with open(t, 'rb') as f:
             current_samples[t] = f.read()
-    current_esi = esi(current_samples, current_settings, info)
+    current_esi = esi(current_samples, current_settings, name_mappings)
+    print(current_samples.keys())
     os.chdir(abs_path)
-    with open(f'{name}.esi', 'wb') as f:
+    with open(name, 'wb') as f:
         pickle.dump(current_esi, f)
-    print(f'Successfully made ESI file: {name}.esi')
+    print(f'Successfully made ESI file: {name}')
 
 
 def unzip_esi(file_path, folder_name=None):

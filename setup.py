@@ -4,7 +4,7 @@ from os import path
 setup(
     name='esi_maker',
     py_modules=['esi_maker'],
-    version='0.1',
+    version='0.11',
     license='LGPLv2.1',
     description='This is a python module to make, load and unzip esi files',
     author='Rainbow-Dreamer',
