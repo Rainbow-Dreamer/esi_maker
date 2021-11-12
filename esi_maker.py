@@ -2,10 +2,12 @@ import os
 from io import BytesIO
 import pickle
 from pydub import AudioSegment
-# ESI file is Easy Sampler Instrument, an ESI file combines a folder of audio files (samples)
-# and a settings file (not necessary) into one file, and can be loaded in Easy Sampler or to
-# unzip as a folder of sound files and a settings file.
-# It can also be loaded as a python object, which is an instance of class esi.
+'''
+ESI file is Easy Sampler Instrument, an ESI file combines a folder of audio files (samples)
+and a settings file (not necessary) into one file, and can be loaded in Easy Sampler or to
+unzip as a folder of sound files.
+It can also be loaded as a python object, which is an instance of class esi.
+'''
 
 
 class esi:
