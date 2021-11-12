@@ -12,6 +12,7 @@ For more details about ESI format, you can refer to the musicpy sampler module's
 
 ## Installation
 Make sure you have installed python >= 3.7 first.
+
 Run `pip install esi_maker` in cmd/terminal.
 
 ## Importing
