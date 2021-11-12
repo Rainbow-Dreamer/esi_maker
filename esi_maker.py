@@ -24,6 +24,36 @@ class esi:
         if ind in self.file_names:
             return self.samples[self.file_names[ind]]
 
+    def export(self, note_name, name=None, format='wav', **export_args):
+        current = self[note_name]
+        if not current:
+            return
+        if name is None:
+            if self.name_mappings and note_name in self.name_mappings:
+                name = self.name_mappings[note_name]
+            elif note_name in self.samples:
+                name = note_name
+            elif note_name in self.file_names:
+                name = self.file_names[note_name]
+        if type(current) == AudioSegment:
+            current.export(name, **export_args)
+        else:
+            with open(name, 'wb') as f:
+                f.write(current)
+
+    def export_all(self, folder_name='Untitled'):
+        abs_path = os.getcwd()
+        if not os.path.isdir(folder_name):
+            os.mkdir(folder_name)
+        os.chdir(folder_name)
+        for i, j in self.samples.items():
+            if type(j) == AudioSegment:
+                j.export(i, format=os.path.splitext(i)[1][1:])
+            else:
+                with open(i, 'wb') as f:
+                    f.write(j)
+        os.chdir(abs_path)
+
 
 def make_esi(file_path,
              name='untitled.esi',
@@ -62,9 +92,10 @@ def unzip_esi(file_path, folder_name=None, show_msg=True):
     if folder_name is None:
         folder_name = os.path.basename(file_path)
         folder_name = folder_name[:folder_name.rfind('.')]
-    if folder_name not in os.listdir():
+    if not os.path.isdir(folder_name):
         os.mkdir(folder_name)
     current_esi = load_esi(file_path, convert=False)
+    abs_path = os.getcwd()
     os.chdir(folder_name)
     for each in current_esi.samples:
         if show_msg:
@@ -73,6 +104,7 @@ def unzip_esi(file_path, folder_name=None, show_msg=True):
             f.write(current_esi.samples[each])
     if show_msg:
         print(f'Unzip {os.path.basename(file_path)} successfully')
+    os.chdir(abs_path)
 
 
 def load_esi(file_path, convert=True):
