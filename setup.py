@@ -10,6 +10,10 @@ setup(
     author='Rainbow-Dreamer',
     author_email='1036889495@qq.com',
     install_requires=['pydub'],
+    url='https://github.com/Rainbow-Dreamer/esi_maker',
+    download_url=
+    'https://github.com/Rainbow-Dreamer/esi_maker/archive/0.11.tar.gz',
+    keywords=['esi', 'sound source', 'music'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
