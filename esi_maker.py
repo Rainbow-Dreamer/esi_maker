@@ -11,6 +11,7 @@ It can also be loaded as a python object, which is an instance of class esi.
 
 
 class esi:
+
     def __init__(self, samples, settings=None, name_mappings=None):
         self.samples = samples
         self.settings = settings
@@ -69,7 +70,7 @@ def make_esi(file_path,
     current_settings = None
     if settings is not None:
         if asfile:
-            with open(settings, encoding='utf-8-sig') as f:
+            with open(settings, encoding='utf-8') as f:
                 current_settings = f.read()
         else:
             current_settings = settings
